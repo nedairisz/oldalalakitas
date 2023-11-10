@@ -1,0 +1,124 @@
+*{/*MInden html elemre érvényes*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*width értékbe a padding és a border is beletartozik*/
+}
+header, nav, article, aside, footer{
+    border: 1px solid gray;
+    padding: 10px;
+    margin: 5px;
+}
+body{
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    background-image: url("kepek/hatter.jpg");
+}
+main{
+    background-color: rgb(226, 203, 174);
+    /*szülőelem. ő tartalmazza a többit, amit el akarok rendezni*/
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 100px 50px auto 50px;
+    grid-template-areas: 
+        "h h h"
+        "n n n"
+        "b a j"
+        "f f f";
+}
+/*gyerekeknek nevet adunk*/
+header{
+    grid-area: h;
+
+}
+nav{
+    grid-area: n;
+}
+nav ul{
+    background-color: rgb(73, 73, 143);
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+nav li{
+    text-align: center;
+}
+nav a{
+    text-decoration: none;
+    color: aquamarine;
+}
+article{
+    grid-area: a;
+}
+.kepek{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    border: 1px solid black;
+    margin: 5px;
+}
+img{
+    width: 100%;
+}
+div{
+    border: 1px solid black;
+    padding: 5px;
+}
+footer{
+    grid-area: f;
+}
+aside#bal{
+    grid-area: b;
+}
+aside#jobb{
+    grid-area: j;
+}
+
+/* törépont Media Queri-vel */
+/* TABLET */
+@media screen and (max-width: 700px) {
+    body {
+      width:100%;
+      font-size: 5vw;
+    }
+    main{
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px auto auto auto auto 50px;
+    grid-template-areas: 
+        "h"
+        "n"
+        "a"
+        "j"
+        "b"
+        "f";
+    }
+    .kepek{
+        grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* MOBIL */
+  @media screen and (max-width: 450px) {
+    body {
+      width:100%;
+      font-size: 5vw;
+    }
+    main{
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px auto auto auto auto 50px;
+        grid-template-areas: 
+            "h"
+            "n"
+            "a"
+            "j"
+            "b"
+            "f";
+    }
+    .kepek{
+        grid-template-columns: 1fr;
+    }
+    nav ul{
+        grid-template-columns: 1fr;
+    }
+  }
